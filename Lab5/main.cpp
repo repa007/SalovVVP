@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <cmath>
 using namespace std;
 
@@ -7,10 +7,10 @@ void First()
     double x1, y1, x2, y2, x, y, Length;
     cout << "Enter x1\n";
     cin >> x1;
-    cout << "Enter x2\n";
-    cin >> x2;
     cout << "Enter y1\n";
     cin >> y1;
+    cout << "Enter x2\n";
+    cin >> x2;
     cout << "Enter y2\n";
     cin >> y2;
     x = abs(x1 - x2);
@@ -47,7 +47,7 @@ void Third()
     AC = abs(A - C);
     BC = abs(B - C);
     Prod = AC * BC;
-    cout << "Product = " << Prod<< endl;
+    cout << "Product = " << Prod << endl;
 }
 void Fourth()
 {
@@ -82,7 +82,7 @@ void Fifth()
     cin >> x3;
     cout << "Enter y3\n";
     cin >> y3;
-    
+
     x = abs(x1 - x2);
     y = abs(y1 - y2);
     AB = sqrt(x * x + y * y);
@@ -140,7 +140,7 @@ int main()
         {
             Error();
         }
-        
+
     }
     return 0;
 }
