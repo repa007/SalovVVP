@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <cmath>
 using namespace std;
 
@@ -76,7 +76,7 @@ void Fifth()
     cin >> x;
     a = x - 3;
     y = 4 * (a * a * a * a * a * a) - 7 * (a * a * a) + 2;
-    cout << "y = " << x << endl;
+    cout << "y = " << y << endl;
 }
 void Sixth()
 {
@@ -111,7 +111,7 @@ int main()
             << "2) Swap the contents: from A to B, from B to C, from C to A.\n"
             << "3) Swap the contents: from A to C, from C to B, from B to A.\n"
             << "4) Find the Value of the Function y = 3x^6 - 6x^2 - 7 for a given value of x.\n"
-            << "5) Find the Value of the Function y = 4(x−3)^6 − 7(x−3)^3 + 2 for a given value of x.\n"
+            << "5) Find the Value of the Function y = 4(x-3)^6 - 7(x-3)^3 + 2 for a given value of x.\n"
             << "6) Given a number A. Calculate A ^ 8 using an auxiliary variable and three multiplications.\n"
             << "7) Given a number A. Calculate A ^ 15 using two auxiliary variables and five multiplication operations.\n";
         cin >> ExNum;
