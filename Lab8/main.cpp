@@ -113,13 +113,12 @@ int main()
 {
     while (true) {
         int ExNum;
-        cout <<   "   Choose number of exercise (enter 0 to exit)\n"
-            <<   "   1) Bytes to Kilobytes\n"
-            <<   "   2) Find the number of line segments B located on line segment A.\n"
-            <<   "   3) Find remaining length of A\n"
-            <<   "   4) Permutation of the digits of a two-digit number\n"
-            <<   "   5) The first digit on the left of three-digit number was deleted and assigned to the right.\n"
-            <<   "   6) Find a solution to a system of linear equations\n";
+        cout << "   Choose number of exercise (enter 0 to exit)\n"
+            << "   1) Bytes to Kilobytes\n"
+            << "   2) Find the number of line segments B located on line segment A.\n"
+            << "   3) Find remaining length of A\n"
+            << "   4) Permutation of the digits of a two-digit number\n"
+            << "   5) The first digit on the left side of three-digit number was deleted and assigned to the right.\n";
         cin >> ExNum;
         if (ExNum == 1)
         {
