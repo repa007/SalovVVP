@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <cmath>
 #include <string>
 using namespace std;
@@ -49,7 +49,7 @@ void First()
             delete[] B;
             delete[] A;
         }
-        else 
+        else
         {
             cout << "\nIncorrect data\n\n";
         }
@@ -66,7 +66,7 @@ void Second()
     {
         string N;
         cin >> N;
-        if (stoi(N) > 1) 
+        if (stoi(N) > 1)
         {
             double* C = new double[stoi(N)];
 
@@ -103,11 +103,11 @@ void Second()
             delete[] B;
             delete[] A;
         }
-        else 
+        else
         {
             cout << "\nIncorrect data\n\n";
         }
-        
+
     }
     catch (std::invalid_argument e)
     {
@@ -136,7 +136,7 @@ void Third()
 
             double last = 0;
             for (int i = 0; i < stoi(N); i++) {
-                if (stoi(A[i]) % 2 == 1){
+                if (stoi(A[i]) % 2 == 1) {
                     last = stoi(A[i]);
                 }
             }
@@ -176,69 +176,68 @@ void Fourth()
 {
     try
     {
-        string N;
+        int N, ma = -10000, maxind = 0, mini = 100000, minind = 0;
         cout << "Enter length of A (N):\n";
         cin >> N;
-        if (stoi(N) > 1)
+        double* A = new double[N];
+        double* F = new double[N];
+        if (N > 1)
         {
-
-            //enter A
-            string* A = new string[stoi(N)];
             cout << "Enter elements of A:\n";
-            for (int i = 0; i < stoi(N); i++) {
+            for (int i = 0; i < N; i++)
+            {
                 cin >> A[i];
             }
-
-            //find max
-            int imax = 0;
-            for (int i = 0; i < stoi(N); i++) {
-                if (A[imax] < A[i]) {
-                    imax = i;
+            cout << endl;
+            for (int i = 0; i < N; i++)
+            {
+                F[i] = A[i];
+            }
+            for (int i = 0; i < N; i++)
+            {
+                if (ma < A[i])
+                {
+                    ma = A[i];
+                    maxind = i;
                 }
             }
-
-            //find min
-            int imin = 0;
-            for (int i = 0; i < stoi(N); i++) {
-                if (stoi(A[imin]) > stoi(A[i])) {
-                    imin = i;
+            for (int i = 0; i < N; i++)
+            {
+                if (mini > A[i])
+                {
+                    mini = A[i];
+                    minind = i;
                 }
             }
-            
-
-
-            //copy A in B
-            int* B = new int[stoi(N)];
-            for (int i = 0; i < stoi(N); i++) {
-                B[i] = stoi(A[i]);
+            for (int i = 0; i < N; i++)
+            {
+                A[i] = 0;
             }
-
-            //edit B
-            if (imax > imin) {
-                for (int i = imin + 1; i < imax; i++) {
-                    B[i] = 0;
-                }
+            if (minind >= maxind)
+            {
+                int g = maxind;
+                maxind = minind;
+                minind = g;
             }
-            else {
-                for (int i = imax + 1; i < imin; i++) {
-                    B[i] = 0;
-                }
+            for (int i = 0; i <= minind; i++)
+            {
+                A[i] = F[i];
             }
-
-            //output
-            cout << "\nElements of B:\n";
-            for (int i = 0; i < stoi(N); i++) {
-                cout << B[i] << endl;
+            for (int i = maxind; i < N; i++)
+            {
+                A[i] = F[i];
             }
-
-
-            delete[] B;
-            delete[] A;
+            for (int i = 0; i < N; i++)
+            {
+                cout << A[i] << endl;
+            }
         }
         else
         {
-            cout << "\nIncorrect data\n\n";
+            cout << "Incorrect data\n";
         }
+        delete[] A;
+        delete[] F;
     }
     catch (std::invalid_argument e)
     {
@@ -266,7 +265,7 @@ void Fifth()
         //copy A in B
         double* B = new double[stoi(N)];
         for (int i = 0; i < I; i++) {
-            B[i] = stoi(A[i+1]);
+            B[i] = stoi(A[i + 1]);
         }
         B[I] = stod(A[0]);
         for (int i = I + 1; i < stoi(N); i++) {
