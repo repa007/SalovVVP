@@ -1,5 +1,6 @@
 ﻿#include <iostream>
 #include <cmath>
+#include <math.h>
 #include <string>
 using namespace std;
 
@@ -242,7 +243,7 @@ void Third()
 void Fourth()
 {
     int Res;
-    cout << "Enter length of A (N):\n";
+    cout << "Enter number of points (N):\n";
     try
     {
         string N;
@@ -250,23 +251,40 @@ void Fourth()
         if (stoi(N) > 1)
         {
             //enter A
-            float** arr = new float* [stoi(N)]; // две строки в массиве
-            for (int count = 0; count < 2; count++)
+            float** arr = new float* [stoi(N)];
+            for (int count = 0; count < stoi(N); count++)
                 arr[count] = new float[2];
 
             for (int i = 0; i < stoi(N); i++) {
-                cin >> arr[i][0] >> arr[i][1];
+                cout << "x: ";
+                cin >> arr[i][0];
+                cout << "y: ";
+                cin >> arr[i][1];
+                cout << endl;
             }
 
+            cout << "Points:\n";
+            for (int i = 0; i < stoi(N); i++) {
+                cout << arr[i][0] << "; " << arr[i][1] << endl;
+            }
 
+            //calculating
+            float len = 0;
+            float x = 0;
+            float y = 0;
+            for (int i = 0; i < stoi(N); i++) {
+                if ((arr[i][0] < 0) and (arr[i][1] > 0)) {
+                    if (sqrt(arr[i][0] * arr[i][0] + arr[i][1] * arr[i][1]) > len) {
+                        x = arr[i][0];
+                        y = arr[i][1];
+                        len = sqrt(arr[i][0] * arr[i][0] + arr[i][1] * arr[i][1]);
+                    }
+                }
+            }
 
-
-           
             //output
             cout << "\nElements of B:\n";
-            for (int i = 0; i < stoi(N); i++) {
-                cout << arr[i][0] << arr[i][1];
-            }
+            cout << "(" << x << ";" << y << ")\n\n";
 
             delete[] arr;
         }
@@ -283,50 +301,60 @@ void Fourth()
 
 void Fifth()
 {
-    string N;
-    cout << "Enter length of A (N):\n";
-    cin >> N;
-    if (stoi(N) > 1)
+    try
     {
-
-        //enter A
-        string* A = new string[stoi(N)];
-        cout << "Enter elements of A:\n";
-        for (int i = 0; i < stoi(N); i++) {
-            cin >> A[i];
-        }
-
-        //counting positives
-        int pos = 0;
-        for (int i = 0; i < stoi(N); i++) {
-            if (stod(A[i]) > 0) {
-                pos++;
+        string N;
+        cout << "N: ";
+        cin >> N;
+        if (stoi(N) > 1) {
+            float** arr = new float* [stoi(N)];
+            for (int count = 0; count < stoi(N); count++) {
+                arr[count] = new float[2];
             }
-        }
 
-        //create B
-        string* B = new string[stoi(N) + pos];
-        int j = 0;
-        for (int i = 0; i < stoi(N); i++) {
-            if (stod(A[i]) > 0) {
-                B[j] = "0";
-                j++;
-                B[j] = A[i];
-                j++;
+            //enter A
+            int i;
+            cout << "Enter points: ";
+            for (i = 0; i < stoi(N); ++i) {
+                cout << "\nPoint " << i + 1 << endl;
+                cout << "  x: ";
+                cin >> arr[i][0];
+                cout << "  y: ";
+                cin >> arr[i][1];
             }
-            else {
-                B[j] = A[i];
-                j++;
-            }
-        }
 
-        //output
-        cout << "\nNew array: \n";
-        for (int i = 0; i < stoi(N) + pos; i++) {
-            cout << B[i] << endl;
+            int p1, p2, p3, i2, i3;
+            float p, pmax = 0;
+
+            for (i = 0; i < stoi(N); ++i) {
+                for (i2 = i + 1; i2 < stoi(N); ++i2) {
+                    for (i3 = i2 + 1; i3 < stoi(N); ++i3) {
+                        p = 0;
+                        p += sqrt(pow(arr[i][0] - arr[i2][0], 2) + pow(arr[i][1] - arr[i2][1], 2));
+                        p += sqrt(pow(arr[i][0] - arr[i3][0], 2) + pow(arr[i][1] - arr[i3][1], 2));
+                        p += sqrt(pow(arr[i2][0] - arr[i3][0], 2) + pow(arr[i2][1] - arr[i3][1], 2));
+                        if (p > pmax) {
+                            p1 = i;
+                            p2 = i2;
+                            p3 = i3;
+                            pmax = p;
+                        }
+                    }
+                }
+            }
+
+            //output
+            cout << "Perimeter = " << pmax << endl;
+            cout << "Numbers of points: " << p1 + 1 << ", " << p2 + 1 << ", " << p3 + 1 << endl << endl;
         }
-        delete[] B;
-        delete[] A;
+        else
+        {
+            cout << "\nIncorrect data\n\n";
+        }
+    }
+    catch (std::invalid_argument e)
+    {
+        cout << "\nIncorrect data\n\n";
     }
 }
 
